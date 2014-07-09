@@ -50,8 +50,9 @@ $(document).ready(function(){
 		});
 	});*/
 
+	aaa();
 	
-	$('#middle').mouseup(function(){ // 미들 클릭시 초기화
+	$('#middle').mouseup(function(event){ // 미들 클릭시 초기화
 		dragdrop_timerCheck();
 		iconClick = 0;
 		
@@ -61,47 +62,49 @@ $(document).ready(function(){
 		clearTimeout(timeClock);
 		
 		/* ---- */
-		
+		return false;
+		event.preventDefault();
+		event.stopPropagation();
 	});
 	
 	
-		$(".drag").click(function(){
 		
-		if(iconClick == 0) {
-			
-		console.log(this);
-		
-		clickIcon = $(this).find('i')[0].className;
-		//console.log(clickIcon);
-		db.transaction(function(tx) {
-			// tx.executeSql('drop table if exists ACTION'); // DB 초기화
-			tx.executeSql('INSERT or REPLACE into ACTION (ICON_NAME, CLASS_NAME) VALUES ("lastclick", ?)', [clickIcon]);
-		});
-		
-		setInterval(function(){
-			location.href = "functionEdit_sql.html";
-		}, 2);
-		
-		} else {
-			location.href="#";	
-			iconClick(0);
-		}
-		
-		iconClick = 1;
-		
-	});
-
-	
-	
 	
 
-	
-	
-	
 	
 	
 	
 });
+
+function aaa() {
+	
+$(".drag").click(function(){
+	
+	if(iconClick == 0) {
+		
+	console.log(this);
+	
+	clickIcon = $(this).find('i')[0].className;
+	//console.log(clickIcon);
+	db.transaction(function(tx) {
+		// tx.executeSql('drop table if exists ACTION'); // DB 초기화
+		tx.executeSql('INSERT or REPLACE into ACTION (ICON_NAME, CLASS_NAME) VALUES ("lastclick", ?)', [clickIcon]);
+	});
+	
+	setInterval(function(){
+		location.href = "functionEdit_sql.html";
+	}, 2);
+	
+	} else {
+		location.href="#";	
+		iconClick(0);
+	}
+	
+	iconClick = 1;
+	
+});
+
+}
 
 
 
