@@ -62,9 +62,6 @@ $(document).ready(function(){
 		clearTimeout(timeClock);
 		
 		/* ---- */
-		return false;
-		event.preventDefault();
-		event.stopPropagation();
 	});
 	
 	
@@ -347,11 +344,20 @@ function timeclock(){
 }
 
 
-function yes() {
+function no() {
 	//window.location.reload();
+	dragdrop_timerCheck();
+	iconClick = 0;
+	
+	
+	/* 타이머 초기화 */
+	
+	clearTimeout(timeClock);
+	
+	/* ---- */
 }
 
-function no() {
+function yes() {
 	second = 0;
 	minute = defaultValue;
 	end = 0;    	

@@ -86,8 +86,8 @@ public class MainActivity extends ActionBarActivity {
 
 		   		Notification notice = new NotificationCompat.Builder(getApplicationContext())
 		   				.setContentTitle("SemiLog")
-		   				.setContentText("알림확인")
-		   				.setSmallIcon(R.drawable.ic_launcher)
+		   				.setContentText("지정한 시간이 되었다록")
+		   				.setSmallIcon(R.drawable.ic_notif)
 		   				.setTicker("알림").setAutoCancel(true)
 		   				.setContentIntent(notiP).build();
 
@@ -104,24 +104,24 @@ public class MainActivity extends ActionBarActivity {
 		      
 				
 		      AlertDialog alert = new AlertDialog.Builder(MainActivity.this)
-		    	.setIcon(R.drawable.ic_launcher)
+		    	.setIcon(R.drawable.ic_notification)
 		    	.setTitle("알림")
-		    	.setMessage("알림을 연장하시겠습니까?")
+		    	.setMessage("기록을 계속하시겠습니까?")
 		    	.setCancelable(false)
-		    	.setPositiveButton("확인", new DialogInterface.OnClickListener() {	
+		    	.setPositiveButton("계속", new DialogInterface.OnClickListener() {	
 		  			@Override
 		  			public void onClick(DialogInterface dialog, int which) {
 		  				
 		  				notimng.cancel(0);
-		  				webView.loadUrl("javascript:no()");
+		  				webView.loadUrl("javascript:yes()");
 		  				
 		  			}
-		  		}).setNegativeButton("취소", new DialogInterface.OnClickListener() {
+		  		}).setNegativeButton("중단", new DialogInterface.OnClickListener() {
 		      @Override
 		      public void onClick(DialogInterface dialog, int which) {
 		       
 		       	notimng.cancel(0);
-		      		webView.loadUrl("javascript:yes()");
+		      		webView.loadUrl("javascript:no()");
 		        }
 		      }).create();
 		    	alert.show();
