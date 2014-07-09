@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="js/sha1.js"></script>
+<script type="text/javascript" src="js/jquery.toastmessage.js"></script>
+<link rel="stylesheet" href="css/jquery.toastmessage.css">
 <title>LOG IN</title>
 <style type="text/css">
 @font-face{
@@ -115,7 +117,15 @@ $("#btnStart").click(function(){
 		.done(function(data){
 			console.log(data);
 			if (data == 'no') {
-				alert('암호가 다르다');
+				//alert('암호가 다르다');
+				$().toastmessage('showToast',{
+				      text     : '비밀번호 틀렸거등요',
+				      stayTime : 1500,
+				      sticky   : false,
+				      position : 'middle-center',
+				      type     : 'error',
+				      close    : function () {console.log("toast is closed ...");}
+				  });
 			} else {
 				db_updateUser(data);
 			}

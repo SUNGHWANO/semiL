@@ -78,6 +78,8 @@ public class MainActivity extends ActionBarActivity {
 			public boolean onJsAlert(final WebView view, final String url, final String message, JsResult result) {
 				Log.d(TAG, "onJsAlert(" + view + ", " + url + ", " + message + ", " + result + ")");
 				
+
+				
 				//startService(new Intent("com.example.tt"));
 				
 				 notimng = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
